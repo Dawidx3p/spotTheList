@@ -1,0 +1,17 @@
+.SearchResults{
+    margin-bottom: 50px;
+}
+.ButtonS{
+    width: 100%;
+    padding: 10px 15px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #1ED760;
+    margin-bottom: 2px;
+}
+.ButtonS:hover{
+background-color: #1ED760;
+color: white;
+}
