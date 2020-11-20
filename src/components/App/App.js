@@ -24,6 +24,7 @@ class App extends React.Component {
       this.updatePlaylistName = this.updatePlaylistName.bind(this);
       this.removeTrack = this.removeTrack.bind(this);
       this.addTrack = this.addTrack.bind(this);
+      this.savePlaylist = this.savePlaylist.bind(this);
       
   }
   search(term) {
@@ -57,7 +58,21 @@ class App extends React.Component {
 	}
   updatePlaylistName(name){
     this.setState({ playlistName : name })
-	}
+  }
+  savePlaylist() {
+		try{
+      const trackUris = this.state.playlistTracks.map(track => track.uri);
+      Spotify.savePlaylist(this.state.playlistName, trackUris, this.state.playlistId).then(() => {
+        this.setState({
+          playlistName: 'New Playlist',
+          playlistTracks: [],
+          playlistId: null
+        })
+      })
+      } catch(err){
+
+      }
+    }
   componentDidMount() {
 		Spotify.getUserPlaylists().then( userPlaylists =>
 		this.setState({playlistList: userPlaylists}))
@@ -70,11 +85,11 @@ class App extends React.Component {
       <Container>
         <Row>
           <Col xs={12} md={4}>
-          <SearchResults results={this.state.searchResults}/>
+          <SearchResults results={this.state.searchResults} onAdd={this.addTrack}/>
           </Col>
           <Col xs={12} md={4}>
           <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} 
-          onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onAdd={this.addTrack}/>
+          onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onSave={this.savePlaylist} />
           </Col>
           <Col xs={12} md={4}>
           <Playlists list={this.state.playlistList} select={this.selectPlaylistId}/>

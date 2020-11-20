@@ -16,6 +16,8 @@ class Playlist extends React.Component{
               <input id="PlaylistInput" 
               value={this.props.name}
               onChange={this.handleNameChange}/>
+              <button id="PlaylistInput"
+			  onClick={this.props.onSave}>SAVE TO SPOTIFY</button>
               {this.props.tracks.map(button => {
                 return <PlaylistTrack track={button} key={button.id} id={button.id} name={button.name} onRemove={this.props.onRemove} onAdd={this.props.onAdd} isRemoval={true} />;
             }) }

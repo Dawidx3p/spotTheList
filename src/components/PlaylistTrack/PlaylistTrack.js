@@ -9,9 +9,11 @@ class PlaylistTrack extends React.Component{
 	}
 	renderAction() {
 		if(this.props.isRemoval){
-			return <button key={this.props.id} id={this.props.id} className="ButtonS" onClick={this.removeTrack}>{this.props.name}</button>
+			return <div key={this.props.id} id={this.props.id} 
+			className="ButtonS"><button onClick={this.removeTrack} className="deleteB">x</button>{this.props.name}</div>
 		}else {
-			return <button key={this.props.id} id={this.props.id} className="ButtonS" onClick={this.addTrack}>{this.props.name}</button>
+			return <div key={this.props.id} id={this.props.id} 
+			className="ButtonS"><button onClick={this.addTrack} className="deleteB">+</button>{this.props.name}</div>
 		}
 	}
 	removeTrack() {

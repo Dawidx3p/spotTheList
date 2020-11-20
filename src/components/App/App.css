@@ -4,8 +4,8 @@ h2{
 body {
   text-align: center;
   background-image: url('../../img/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: 100%;
+  background-repeat: repeat;
   height: 100%;
 }
 #logo{
