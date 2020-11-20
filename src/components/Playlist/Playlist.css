@@ -1,0 +1,15 @@
+#PlaylistInput{
+    width: 100%;
+    padding: .77rem 0;
+    border-radius: 54px;
+    background-color: #1ED760;
+    text-align: center;
+    font-size: .833rem;
+    border: 0px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.Playlist{
+    margin-bottom: 50px;
+}

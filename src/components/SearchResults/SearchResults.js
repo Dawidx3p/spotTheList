@@ -1,7 +1,6 @@
 import './SearchResults.css';
 
 export default function SearchResults(props){
-    console.log(props);
     return(
         <div className="SearchResults">
             <h2>Search Results</h2>

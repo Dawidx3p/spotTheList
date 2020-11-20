@@ -4,7 +4,7 @@
 .ButtonS{
     width: 100%;
     padding: 10px 15px;
-    background: none;
+    background-color: rgba(0,0,0,0.4);
     border: 1px solid black;
     border-radius: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
