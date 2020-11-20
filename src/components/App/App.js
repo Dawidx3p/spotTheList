@@ -22,12 +22,29 @@ class App extends React.Component {
       this.search = this.search.bind(this);
       this.selectPlaylistId = this.selectPlaylistId.bind(this);
       this.updatePlaylistName = this.updatePlaylistName.bind(this);
+      this.removeTrack = this.removeTrack.bind(this);
+      this.addTrack = this.addTrack.bind(this);
+      
   }
   search(term) {
 		Spotify.search(term).then(results => {
 		this.setState({searchResults: results}) 
 		})
   }
+  removeTrack(track) {
+		let tracks = this.state.playlistTracks;
+		tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+		this.setState({ playlistTracks: tracks })
+  }
+  addTrack(track) {
+		const tracks = this.state.playlistTracks;
+		if (tracks.find(savedTrack => savedTrack.id === track.id)) {
+		  return;
+		}else {
+		tracks.push(track);
+		this.setState({ playlistTracks: tracks });
+		}
+	}
   selectPlaylistId(id, name) {
 		Spotify.getPlaylistId(id)
 		.then(tracks => {
@@ -56,7 +73,8 @@ class App extends React.Component {
           <SearchResults results={this.state.searchResults}/>
           </Col>
           <Col xs={12} md={4}>
-          <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} onNameChange={this.updatePlaylistName}/>
+          <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} 
+          onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onAdd={this.addTrack}/>
           </Col>
           <Col xs={12} md={4}>
           <Playlists list={this.state.playlistList} select={this.selectPlaylistId}/>

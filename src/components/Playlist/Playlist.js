@@ -1,5 +1,6 @@
 import './Playlist.css';
 import React from 'react';
+import PlaylistTrack from '../PlaylistTrack/PlaylistTrack';
 
 class Playlist extends React.Component{
 	constructor(props) {
@@ -16,7 +17,7 @@ class Playlist extends React.Component{
               value={this.props.name}
               onChange={this.handleNameChange}/>
               {this.props.tracks.map(button => {
-                return <button key={button.id} id={button.id} className="ButtonS">{button.name}</button>;
+                return <PlaylistTrack track={button} key={button.id} id={button.id} name={button.name} onRemove={this.props.onRemove} onAdd={this.props.onAdd} isRemoval={true} />;
             }) }
 		</div>
     )
